@@ -10,7 +10,7 @@ namespace InitiatorApp
         static void Main(string[] args)
         {
             SessionSettings settings = new SessionSettings("initiator.cfg");
-            IApplication myApp = new InitiatorApplication();
+            var myApp = new InitiatorApplication();
             IMessageStoreFactory storeFactory = new FileStoreFactory(settings);
             ILogFactory logFactory = new FileLogFactory(settings);
             SocketInitiator initiator = new SocketInitiator(myApp, storeFactory, settings, logFactory);
@@ -50,6 +50,11 @@ namespace InitiatorApp
                         }
                         break;
 
+                    case "3":
+                        Console.Write("Enter SessionID to send order : ");
+
+                        myApp.SendNewOrder(initiator.GetSessionIDs().FirstOrDefault());
+                        break;
                     case "0": // Exit
                         if (initiator.IsLoggedOn)
                         {

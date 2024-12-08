@@ -44,8 +44,8 @@ namespace AcceptorApp
             Session session = Session.LookupSession(sessionID);
             if (session != null)
             {
-                //session.Logout("Forced logout by Acceptor");
-                session.Disconnect("Forced logout by Acceptor");
+                session.Logout("Forced logout by Acceptor");
+                //session.Disconnect("Forced logout by Acceptor");
                 //session.Dispose();
             }
             else
